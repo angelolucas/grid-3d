@@ -1,0 +1,33 @@
+body {
+  cursor: -webkit-grab;
+}
+body:active {
+  cursor: -webkit-grabbing;
+}
+
+.platform-3d {
+  position: relative;
+  perspective: 800px;
+  width: 100vw;
+  height: 100vh;
+  min-width: 300px;
+  min-height: 300px;
+  display: flex;
+  overflow: hidden;
+
+  * {
+    transform-style: preserve-3d;
+  }
+}
+
+// Rotate
+.platform-3d__rotate {
+  will-change: transform;
+  transform: rotateX(45deg) rotateZ(45deg) translateZ(0);
+  width: 0;
+  height: 0;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
