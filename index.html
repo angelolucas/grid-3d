@@ -36,6 +36,14 @@
               <div>
                 <div>
                   <div>
+                    <div>
+                      <div>
+                        <div>
+                          <div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -48,13 +56,32 @@
 </div>
 <div class="tools">
   <ul>
-    <li>
+    <li class="tool">
       <label>
         RotateX
-        <input type="number" />
-        px
-        <input type="range" />
+        <input class="tool__number tools__input-rotateX" type="number" />
+        deg
+        <input class="tool__range tools__input-rotateX" min="-180" max="180" type="range" />
       </label>
+    </li>
+    <li class="tool">
+      <label>
+        RotateY
+        <input class="tool__number tools__input-rotateY" type="number" />
+        deg
+        <input class="tool__range tools__input-rotateY" min="-180" max="180" type="range" />
+      </label>
+    </li>
+    <li class="tool">
+      <label>
+        RotateZ
+        <input class="tool__number tools__input-rotateZ" type="number" />
+        deg
+        <input class="tool__range tools__input-rotateZ" min="-180" max="180" type="range" />
+      </label>
+    </li>
+    <li class="tool">
+      <button class="tool__reset">reset</button>
     </li>
   </ul>
 
@@ -63,7 +90,9 @@
   Add Layer
   Altura
   Largura
-  <button> Add</button><button>Remove</button>--->
+  <button> Add</button><button>Remove</button>
+  reset
+  --->
 
 </div>
 <script src="javascript/jquery-3.2.1.min.js"></script>

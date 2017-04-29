@@ -188,4 +188,5 @@ body:active {
   top: -1px;
   left: -1px;
   transform: translateX(100%);
+  transform-origin: left;
 }
