@@ -6,6 +6,23 @@ var transform = {
   rotateZ: 0, // deg
 }
 
+var block = {
+  length: 10
+}
+
+// Create
+var create = function() {
+  var blocks = '<div>';
+
+  for(var i = 0; i < block.length; i++) {
+    blocks += '<div>';
+  }
+
+  $('.grid-3d').append(blocks);
+}
+
+create();
+
 // Define Default Values;
 $('.tools__input-rotateX').val(transform.rotateX);
 $('.tools__input-rotateY').val(transform.rotateX);
@@ -28,6 +45,7 @@ $('.tools__input-rotateZ').on('input', function(){
   transform.rotateZ = $(this).val();
   changeGrid();
 })
+
 
 changeGrid();
 
