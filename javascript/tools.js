@@ -7,32 +7,44 @@ var transform = {
 }
 
 var block = {
-  length: 10
+  length: 3
 }
 
 // Create
 var create = function() {
-  var blocks = '<div>';
+  var blocks = '';
 
   for(var i = 1; i < block.length -1; i++) {
-    blocks += '<div>';
+    blocks += '<div class="b">';
   }
-  blocks += '<div class="last">';
+  blocks += '<div class="b b--last">';
 
   $('.grid-3d').append(blocks);
 }
 
 // Add
 $('.tool__add').on('click', function() {
-  var $last = $('.grid-3d .last');
+  var elem = $('.grid-3d .b--last');
 
-  $last.append('<div>');
-  $last.removeClass('last');
-  $last.find('div').addClass('last');
+  if( elem.length ) {
+    var $last = $('.grid-3d .b--last');
+  } else {
+    var $last = $('.grid-3d');
+  }
+
+  $last.append('<div class="b b--last">');
+  $last.removeClass('b--last');
 
   transformGrid();
-
 });
+
+// Remove
+$('.tool__remove').on('click', function() {
+  var $last = $('.grid-3d .b--last');
+
+  $last.parent('.b').addClass('b--last');
+  $last.remove();
+})
 
 create();
 
