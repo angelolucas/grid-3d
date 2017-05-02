@@ -1,14 +1,24 @@
-// Default Values
-var transform = {
-  translateX: 100, // %
-  rotateX: 0, // deg
-  rotateY: 0, // deg
-  rotateZ: 0, // deg
-}
 
 var block = {
   length: 3
 }
+
+var FizzyText = function() {
+  this.rotateX = 0;
+  this.rotateY = 0;
+  this.rotateZ = 0;
+};
+
+var text = new FizzyText();
+var gui = new dat.GUI();
+
+var rotateX = gui.add(text, 'rotateX', -180, 180);
+var rotateY = gui.add(text, 'rotateY', -180, 180);
+var rotateZ = gui.add(text, 'rotateZ', -180, 180);
+
+rotateX.onChange(function(value){transformGrid()});
+rotateY.onChange(function(value){transformGrid()});
+rotateZ.onChange(function(value){transformGrid()});
 
 // Create
 var create = function() {
@@ -48,36 +58,14 @@ $('.tool__remove').on('click', function() {
 
 create();
 
-// Define Default Values;
-$('.tools__input-rotateX').val(transform.rotateX);
-$('.tools__input-rotateY').val(transform.rotateX);
-$('.tools__input-rotateZ').val(transform.rotateX);
-
-$('.tools__input-rotateX').on('input', function(){
-  $('.tools__input-rotateX').val($(this).val());
-  transform.rotateX = $(this).val();
-  transformGrid();
-})
-
-$('.tools__input-rotateY').on('input', function(){
-  $('.tools__input-rotateY').val($(this).val());
-  transform.rotateY = $(this).val();
-  transformGrid();
-})
-
-$('.tools__input-rotateZ').on('input', function(){
-  $('.tools__input-rotateZ').val($(this).val());
-  transform.rotateZ = $(this).val();
-  transformGrid();
-})
-
 transformGrid();
 
 function transformGrid() {
+  //console.log(rotateX.initialValue);
   $('.grid-3d div').css( 'transform',
-    'translateX(' + transform.translateX + '%)' +
-    'rotateX(' + transform.rotateX + 'deg)' +
-    'rotateY(' + transform.rotateY + 'deg)' +
-    'rotateZ(' + transform.rotateZ + 'deg)'
+    'translateX(' + 100 + '%)' +
+    'rotateX(' + rotateX.object.rotateX + 'deg)' +
+    'rotateY(' + rotateX.object.rotateY + 'deg)' +
+    'rotateZ(' + rotateX.object.rotateZ + 'deg)'
   );
 }
