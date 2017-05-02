@@ -7,7 +7,35 @@ var FizzyText = function() {
   this.rotateX = 0;
   this.rotateY = 0;
   this.rotateZ = 0;
+  this.newLayer = newLayer;
+  this.removeLayer = removeLayer;
 };
+
+// Add
+var newLayer = function() {
+  var elem = $('.grid-3d .b--last');
+
+  if( elem.length ) {
+    var $last = $('.grid-3d .b--last');
+  } else {
+    var $last = $('.grid-3d');
+  }
+
+  $last.append('<div class="b b--last">');
+  $last.removeClass('b--last');
+
+  transformGrid();
+};
+
+// Remove
+var removeLayer = function() {
+  var $last = $('.grid-3d .b--last');
+
+  $last.parent('.b').addClass('b--last');
+  $last.remove();
+};
+
+
 
 var text = new FizzyText();
 var gui = new dat.GUI();
@@ -15,6 +43,8 @@ var gui = new dat.GUI();
 var rotateX = gui.add(text, 'rotateX', -180, 180);
 var rotateY = gui.add(text, 'rotateY', -180, 180);
 var rotateZ = gui.add(text, 'rotateZ', -180, 180);
+gui.add(text, 'newLayer');
+gui.add(text, 'removeLayer');
 
 rotateX.onChange(function(value){transformGrid()});
 rotateY.onChange(function(value){transformGrid()});
@@ -31,30 +61,6 @@ var create = function() {
 
   $('.grid-3d').append(blocks);
 }
-
-// Add
-$('.tool__add').on('click', function() {
-  var elem = $('.grid-3d .b--last');
-
-  if( elem.length ) {
-    var $last = $('.grid-3d .b--last');
-  } else {
-    var $last = $('.grid-3d');
-  }
-
-  $last.append('<div class="b b--last">');
-  $last.removeClass('b--last');
-
-  transformGrid();
-});
-
-// Remove
-$('.tool__remove').on('click', function() {
-  var $last = $('.grid-3d .b--last');
-
-  $last.parent('.b').addClass('b--last');
-  $last.remove();
-})
 
 create();
 
