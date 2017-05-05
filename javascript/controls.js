@@ -6,28 +6,31 @@ var control = {
 };
 
 var gui = new dat.GUI({width: 400});
+var gridX = gui.addFolder('Grid X');
+
+gridX.open();
 
 gui.remember(control);
 
-gui.add(control, 'rotateX', -180, 180).onChange(function(){
+gridX.add(control, 'rotateX', -180, 180).onChange(function(){
   if(control.rotateX > -1 && control.rotateX < 1)
     control.rotateX = 0;
 
   transform();
 });
-gui.add(control, 'rotateY', -180, 180).onChange(function(){
+gridX.add(control, 'rotateY', -180, 180).onChange(function(){
   if(control.rotateY > -1 && control.rotateY < 1)
     control.rotateY = 0;
 
   transform();
 });
-gui.add(control, 'rotateZ', -180, 180).onChange(function(){
+gridX.add(control, 'rotateZ', -180, 180).onChange(function(){
   if(control.rotateZ > -1 && control.rotateZ < 1)
     control.rotateZ = 0;
 
   transform();
 });
-gui.add(control, 'layers', 0, 100).step(1).onChange(function(){
+gridX.add(control, 'layers', 0, 100).step(1).onChange(function(){
   create();
 });
 
@@ -37,10 +40,9 @@ var create = function() {
 
   var blocks = '';
 
-  for(var i = 1; i < control.layers -1; i++) {
+  for(var i = 0; i < control.layers; i++) {
     blocks += '<div class="b">';
   }
-  blocks += '<div class="b b--last">';
 
   $('.grid-3d').append(blocks);
 
