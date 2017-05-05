@@ -1,4 +1,6 @@
 var control = {
+  width: 30,
+  height: 100,
   rotateX: 0,
   rotateY: 0,
   rotateZ: 0,
@@ -6,11 +8,21 @@ var control = {
 };
 
 var gui = new dat.GUI({width: 400});
-var gridX = gui.addFolder('Grid X');
 
-gridX.open();
+
+
 
 gui.remember(control);
+
+gui.add(control, 'width', 2, 300).onChange(function(){
+  transform();
+});
+gui.add(control, 'height', 2, 300).onChange(function(){
+  transform();
+});
+
+var gridX = gui.addFolder('Grid X');
+gridX.open();
 
 gridX.add(control, 'rotateX', -180, 180).onChange(function(){
   if(control.rotateX > -1 && control.rotateX < 1)
@@ -50,12 +62,15 @@ var create = function() {
 };
 
 var transform = function() {
-  $('.grid-3d div').css( 'transform',
-    'translateX(' + 100 + '%)' +
-    'rotateX(' + control.rotateX + 'deg)' +
-    'rotateY(' + control.rotateY + 'deg)' +
-    'rotateZ(' + control.rotateZ + 'deg)'
-  );
+  $('.grid-3d div').css({
+    'transform':
+      'translateX(' + 100 + '%)' +
+      'rotateX(' + control.rotateX + 'deg)' +
+      'rotateY(' + control.rotateY + 'deg)' +
+      'rotateZ(' + control.rotateZ + 'deg)',
+    'width': control.width,
+    'height': control.height
+  });
 };
 
 $( window ).ready(function() {
