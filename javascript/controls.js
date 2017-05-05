@@ -1,4 +1,5 @@
 var control = {
+  perspective: 800,
   width: 30,
   height: 100,
   rotateX: 0,
@@ -9,9 +10,6 @@ var control = {
 
 var gui = new dat.GUI({width: 400});
 
-
-
-
 gui.remember(control);
 
 gui.add(control, 'width', 2, 300).onChange(function(){
@@ -20,6 +18,9 @@ gui.add(control, 'width', 2, 300).onChange(function(){
 gui.add(control, 'height', 2, 300).onChange(function(){
   transform();
 });
+gui.add(control, 'perspective', 300, 1000).onChange(function(){
+  perspective();
+})
 
 var gridX = gui.addFolder('Grid X');
 gridX.open();
@@ -45,6 +46,10 @@ gridX.add(control, 'rotateZ', -180, 180).onChange(function(){
 gridX.add(control, 'layers', 0, 100).step(1).onChange(function(){
   create();
 });
+
+var perspective = function() {
+  $('.platform-3d').css('perspective', control.perspective);
+}
 
 // Create
 var create = function() {
@@ -74,6 +79,7 @@ var transform = function() {
 };
 
 $( window ).ready(function() {
+  perspective();
   create();
   transform();
 })
