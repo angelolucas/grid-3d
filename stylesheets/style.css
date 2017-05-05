@@ -164,11 +164,11 @@ body:active {
 }
 
 .dg .property-name {
-  width: 20% !important;
+  width: 100px !important;
 }
 
 .dg .c {
-  width: 80% !important;
+  width: calc( 100% - 100px) !important;
 }
 
 .dg .has-slider input[type=text] {
@@ -176,5 +176,5 @@ body:active {
 }
 
 .dg .slider {
-  width: 86% !important;
+  width: 85% !important;
 }
