@@ -162,3 +162,19 @@ body:active {
   transform: translateX(100%);
   transform-origin: left;
 }
+
+.dg .property-name {
+  width: 20% !important;
+}
+
+.dg .c {
+  width: 80% !important;
+}
+
+.dg .has-slider input[type=text] {
+  width: 15% !important;
+}
+
+.dg .slider {
+  width: 86% !important;
+}

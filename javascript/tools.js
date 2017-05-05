@@ -11,7 +11,7 @@ var FizzyText = function() {
 };
 
 var text = new FizzyText();
-var gui = new dat.GUI({width: 300});
+var gui = new dat.GUI({width: 400});
 
 gui.remember(text);
 
