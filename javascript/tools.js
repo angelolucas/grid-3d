@@ -18,11 +18,26 @@ gui.remember(text);
 var rotateX = gui.add(text, 'rotateX', -180, 180);
 var rotateY = gui.add(text, 'rotateY', -180, 180);
 var rotateZ = gui.add(text, 'rotateZ', -180, 180);
-var layers = gui.add(text, 'layers', 0, 100);
+var layers = gui.add(text, 'layers', 0, 100).step(1);
 
-rotateX.onChange(function(){transformGrid()});
-rotateY.onChange(function(){transformGrid()});
-rotateZ.onChange(function(){transformGrid()});
+rotateX.onChange(function(){
+  if(text.rotateX > -1 && text.rotateX < 1)
+    text.rotateX = 0;
+
+  transformGrid()
+});
+rotateY.onChange(function(){
+  if(text.rotateY > -1 && text.rotateY < 1)
+    text.rotateY = 0;
+
+  transformGrid()
+});
+rotateZ.onChange(function(){
+  if(text.rotateZ > -1 && text.rotateZ < 1)
+    text.rotateZ = 0;
+
+  transformGrid()
+});
 layers.onChange(function(){create()})
 
 // Create
@@ -49,7 +64,7 @@ function transformGrid() {
   $('.grid-3d div').css( 'transform',
     'translateX(' + 100 + '%)' +
     'rotateX(' + rotateX.object.rotateX + 'deg)' +
-    'rotateY(' + rotateX.object.rotateY + 'deg)' +
-    'rotateZ(' + rotateX.object.rotateZ + 'deg)'
+    'rotateY(' + rotateY.object.rotateY + 'deg)' +
+    'rotateZ(' + rotateZ.object.rotateZ + 'deg)'
   );
 }
