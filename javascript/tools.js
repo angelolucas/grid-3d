@@ -37,6 +37,8 @@ var create = function() {
   blocks += '<div class="b b--last">';
 
   $('.grid-3d').append(blocks);
+
+  transformGrid();
 }
 
 create();
