@@ -1,21 +1,22 @@
 var control = {
   perspective: 800,
   width: 30,
-  height: 100,
+  height: 30,
   rotateX: 0,
   rotateY: 0,
   rotateZ: 0,
-  layers: 10
+  layersX: 4,
+  layersY: 4,
 };
 
 var gui = new dat.GUI({width: 400});
 
 gui.remember(control);
 
-gui.add(control, 'width', 2, 300).onChange(function(){
+gui.add(control, 'width', 2, 100).onChange(function(){
   transform();
 });
-gui.add(control, 'height', 2, 300).onChange(function(){
+gui.add(control, 'height', 2, 100).onChange(function(){
   transform();
 });
 gui.add(control, 'perspective', 300, 1000).onChange(function(){
@@ -43,31 +44,53 @@ gridX.add(control, 'rotateZ', -180, 180).onChange(function(){
 
   transform();
 });
-gridX.add(control, 'layers', 0, 100).step(1).onChange(function(){
-  create();
+gridX.add(control, 'layersX', 0, 100).step(1).onChange(function(){
+  layersX();
 });
 
 var perspective = function() {
   $('.platform-3d').css('perspective', control.perspective);
 }
 
-// Create
-var create = function() {
+var gridY = gui.addFolder('Grid Y');
+gridY.add(control, 'layersY', 0, 100).step(1).onChange(function(){
+  layersY();
+});
+
+gridY.open();
+
+// layers X
+var layersX = function() {
   $('.grid-3d').find('> .b').remove();
 
   var blocks = '';
 
-  for(var i = 0; i < control.layers; i++) {
-    blocks += '<div class="b">';
+  for(var i = 0; i < control.layersX; i++) {
+    blocks += '<div class="b b--x" data-b="' + i + '">';
   }
 
   $('.grid-3d').append(blocks);
 
-  transform();
+  layersY();
 };
 
+// layers Y
+var layersY = function() {
+  for(var x = 0; x < control.layersX; x++) {
+    var position = $('.grid-3d').find('.b[data-b="' + x + '"]');
+    position.find('> .b--y').remove();
+    var blocks = '';
+
+    for(var y = 1; y < control.layersY; y++) {
+      blocks += '<div class="b b--y">';
+    }
+    position.append(blocks);
+  }
+  transform();
+}
+
 var transform = function() {
-  $('.grid-3d div').css({
+  $('.grid-3d .b--x').css({
     'transform':
       'translateX(' + 100 + '%)' +
       'rotateX(' + control.rotateX + 'deg)' +
@@ -80,6 +103,6 @@ var transform = function() {
 
 $( window ).ready(function() {
   perspective();
-  create();
+  layersX();
   transform();
 })

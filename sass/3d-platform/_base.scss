@@ -17,6 +17,7 @@ body:active {
 
   * {
     transform-style: preserve-3d;
+    box-sizing: content-box;
   }
 }
 
