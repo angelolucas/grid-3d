@@ -140,8 +140,8 @@ body:active {
 }
 
 .grid-3d .b {
-  background-color: rgba(0, 255, 0, 0.2);
-  border: 1px solid green;
+  background-color: rgba(255, 255, 255, 0.5);
+  border: 1px solid white;
   position: absolute;
   width: 30px;
   height: 100px;
@@ -162,6 +162,8 @@ body:active {
 
 .grid-3d > .b {
   transform: none !important;
+  left: 3px;
+  top: 3px;
 }
 
 .dg .property-name {
