@@ -44,7 +44,7 @@ gridX.add(control, 'rotateZ', -180, 180).onChange(function(){
 
   transform();
 });
-gridX.add(control, 'layersX', 0, 100).step(1).onChange(function(){
+gridX.add(control, 'layersX', 0, 40).step(1).onChange(function(){
   layersX();
 });
 
@@ -53,7 +53,7 @@ var perspective = function() {
 }
 
 var gridY = gui.addFolder('Grid Y');
-gridY.add(control, 'layersY', 0, 100).step(1).onChange(function(){
+gridY.add(control, 'layersY', 0, 40).step(1).onChange(function(){
   layersY();
 });
 

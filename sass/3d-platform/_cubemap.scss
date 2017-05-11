@@ -1,6 +1,10 @@
 $size: 400px;
 
-.background {
+$sky: #69c3fb;
+$horizon: white;
+$earth: #99bd90;
+
+.cubemap {
   transform: translate3d(-50%, -50%, (-$size/2)) rotateX(-90deg) scale3d(100, 100, 100);
   transform-origin: center center ($size/2);
   width: $size;
@@ -10,10 +14,8 @@ $size: 400px;
   left: 0;
   pointer-events: none;
 }
-.bg {
-  background: repeating-linear-gradient( #001705 0%, #001705 50%, #001906 50%, #001906 100%);
+.cubemap__face {
   background-repeat: no-repeat;
-  background-size: 400% 300%;
   position: absolute;
   width: $size;
   height: $size;
@@ -21,26 +23,20 @@ $size: 400px;
   transform-origin: left;
   backface-visibility: hidden;
 }
-.bg--side1 {
-  transform: translateX(0%);
-  background-position: 0% 50%;
+.cubemap__face--side {
+  background-image:
+    radial-gradient(289% 220% at 50% -25%, $sky 0%, $sky 34%, $horizon 100%), // Sky
+    linear-gradient(to top, #99bd90, #99bd90); // Earth
+  background-position: left top, left bottom;
+  background-size: 100% 50%;
 }
-.bg--side2 {
-  background-position: 33.3% 50%;
-}
-.bg--side3 {
-  background-position: 66.6% 50%;
-}
-.bg--side4 {
-  background-position: 99.9% 50%;
-}
-.bg--top {
-  background-position: 33.3% 0%;
+.cubemap__face--top {
+  background-image: radial-gradient(40% 40%, darken($sky, 5%), $sky);
   transform: translateY(-99.9%) rotateX(-90deg);
   transform-origin: bottom;
 }
-.bg--bottom {
-  background-position: 33.3% 100%;
+.cubemap__face--bottom {
+  background-color: $earth;
   transform: translateY(99.9%) rotateX(90deg);
   transform-origin: top;
 }

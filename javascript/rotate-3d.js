@@ -5,11 +5,11 @@ $(document).ready(function() {
 
   var $demo = $(".platform-3d__rotate");
   var rotation = {
-    x: 70,
+    x: 45,
     z: 45
   };
   var prevValues = {
-    x: 70,
+    x: 45,
     y: 45
   };
   var rotationActive = false;
