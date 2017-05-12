@@ -1,12 +1,12 @@
 var control = {
   perspective: 800,
-  width: 30,
-  height: 30,
+  width: 40,
+  height: 40,
   rotateX: 0,
-  rotateY: 0,
+  rotateY: 9,
   rotateZ: 0,
-  layersX: 4,
-  layersY: 4,
+  layersX: 40,
+  layersY: 40,
 };
 
 var gui = new dat.GUI({width: 400});
@@ -92,7 +92,7 @@ var layersY = function() {
 var transform = function() {
   $('.grid-3d .b--x').css({
     'transform':
-      'translateX(' + 100 + '%)' +
+      'translateX(' + 98 + '%)' +
       'rotateX(' + control.rotateX + 'deg)' +
       'rotateY(' + control.rotateY + 'deg)' +
       'rotateZ(' + control.rotateZ + 'deg)',
