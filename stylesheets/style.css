@@ -46,7 +46,7 @@ body:active {
   left: 0;
   top: 0;
   width: 0;
-  height: 4vw;
+  height: 20vw;
   border-left-width: 2px;
   border-left-style: solid;
   pointer-events: none;

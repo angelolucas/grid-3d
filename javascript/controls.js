@@ -1,12 +1,12 @@
 var control = {
   perspective: 800,
-  width: 40,
-  height: 40,
+  width: 80,
+  height: 80,
   rotateX: 0,
-  rotateY: 9,
+  rotateY: 0,
   rotateZ: 0,
-  layersX: 40,
-  layersY: 40,
+  layersX: 20,
+  layersY: 10,
 };
 
 var gui = new dat.GUI({width: 400});
@@ -58,6 +58,7 @@ gridY.add(control, 'layersY', 0, 40).step(1).onChange(function(){
 });
 
 gridY.open();
+gui.close();
 
 // layers X
 var layersX = function() {
