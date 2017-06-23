@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-  var speed = 1;
+  var speed = 4;
   var front = 119; // W key
   var back = 115; // S key
   var left = 97; // D key
@@ -10,10 +10,10 @@ $(document).ready(function() {
     x: 0,
     y: 0
   }
-  var rotationPercent;
 
   $(document).keypress(function(e) {
-    rotationPercent = (rotation.z * 100 / 90) / 100;
+
+
 
     var quadrant;
 
@@ -28,19 +28,13 @@ $(document).ready(function() {
       quadrant = 4;
     }
 
-    /*console.log(
-      "rotate.z: " + rotation.z,
-      "rotationPercent: ", rotationPercent,
-      "restante rotationPercent: ", 1 - rotationPercent
-    );*/
-
     // Find Quadrant Based on Direction
-    if (e.which === back) {
+    if (e.which === left) {
+      quadrant += 1;
+    } else if (e.which === back) {
       quadrant += 2;
     } else if (e.which === right) {
       quadrant += 3;
-    } else if (e.which === left) {
-      quadrant += 1;
     }
 
     // Corrige segunda volta do quadrante
@@ -48,24 +42,26 @@ $(document).ready(function() {
       quadrant -= 4;
     }
 
+    var rotationPercent = (rotation.z * 100 / 90) / 100;
+    var translateBasedOnRotation = rotationPercent * speed;
+    var restTranslateBasedOnRotation = (1 - rotationPercent) * speed;
+
+    // Aplica valores
     if (quadrant === 1) {
-      values.y += 1 - rotationPercent;
-      values.x += rotationPercent;
+      values.y += restTranslateBasedOnRotation;
+      values.x += translateBasedOnRotation;
     } else if (quadrant === 2) {
-      values.y -= rotationPercent;
-      values.x += 1 - rotationPercent;
+      values.y -= translateBasedOnRotation;
+      values.x += restTranslateBasedOnRotation;
     } else if (quadrant === 3) {
-      values.y -= 1 - rotationPercent;
-      values.x -= rotationPercent;
+      values.y -= restTranslateBasedOnRotation;
+      values.x -= translateBasedOnRotation;
     } else {
-      values.y += rotationPercent;
-      values.x -= 1 - rotationPercent;
+      values.y += translateBasedOnRotation;
+      values.x -= restTranslateBasedOnRotation;
     }
 
-    //values.y += 1 - rotationPercent;
-    //values.x += rotationPercent;
-
-      console.log(quadrant);
+    console.log(quadrant);
 
     translate();
   })
