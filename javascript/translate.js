@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-  var speed = 4;
+  var speed = 9;
   var front = 119; // W key
   var back = 115; // S key
   var left = 97; // D key
@@ -12,20 +12,19 @@ $(document).ready(function() {
   }
 
   $(document).keypress(function(e) {
-
-
-
-    var quadrant;
+    var quadrant = 1;
+    var quadrantDegree = rotation.z;
 
     // Find Quadrant Based on Rotation
-    if (rotation.z <= 90) {
-      quadrant = 1;
-    } else if (rotation.z <= 180) {
+    if (rotation.z > 90 && rotation.z <= 180) {
       quadrant = 2;
-    } else if (rotation.z <= 270) {
+      quadrantDegree -= 90;
+    } else if (rotation.z > 180 && rotation.z <= 270) {
       quadrant = 3;
-    } else {
+      quadrantDegree -= 180;
+    } else if (rotation.z > 270) {
       quadrant = 4;
+      quadrantDegree -= 270;
     }
 
     // Find Quadrant Based on Direction
@@ -37,16 +36,16 @@ $(document).ready(function() {
       quadrant += 3;
     }
 
-    // Corrige segunda volta do quadrante
+    // Corrects second round of the quadrant
     if (quadrant > 4) {
       quadrant -= 4;
     }
 
-    var rotationPercent = (rotation.z * 100 / 90) / 100;
+    var rotationPercent = (quadrantDegree * 100 / 90) / 100;
     var translateBasedOnRotation = rotationPercent * speed;
     var restTranslateBasedOnRotation = (1 - rotationPercent) * speed;
 
-    // Aplica valores
+    // Apply values
     if (quadrant === 1) {
       values.y += restTranslateBasedOnRotation;
       values.x += translateBasedOnRotation;
@@ -60,8 +59,6 @@ $(document).ready(function() {
       values.y += translateBasedOnRotation;
       values.x -= restTranslateBasedOnRotation;
     }
-
-    console.log(quadrant);
 
     translate();
   })
