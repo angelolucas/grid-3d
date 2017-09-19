@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
- <title>3D Platform</title>
- <link href="stylesheets/style.css" rel="stylesheet" type="text/css" />
+  <meta charset="utf-8">
+  <title>3D Platform</title>
+  <link href="stylesheets/style.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 <div class="platform-3d">
   <div class="platform-3d__rotate">
     <div class="axis axis--x">
-      <span class="quadrant first-quadrant">1˚ / x+ / y+</span>
-      <span class="quadrant second-quadrant">2˚ / x+ / y-</span>
-      <span class="quadrant third-quadrant">3˚ / x- / y-</span>
-      <span class="quadrant fourth-quadrant">4˚ / x- / y+</span>
+      <span class="quadrant first-quadrant">1˚/x+/y+</span>
+      <span class="quadrant second-quadrant">2˚/x+/y-</span>
+      <span class="quadrant third-quadrant">3˚/x-/y-</span>
+      <span class="quadrant fourth-quadrant">4˚/x-/y+</span>
       <div class="axis axis--perpendicular"></div>
     </div>
     <div class="axis axis--y">
@@ -20,6 +21,7 @@
     <div class="axis axis--z">
       <div class="axis axis--perpendicular"></div>
     </div>
+
     <div class="cubemap">
       <div class="cubemap__face cubemap__face--side">
         <div class="cubemap__face cubemap__face--top"></div>
@@ -32,7 +34,12 @@
         </div>
       </div>
     </div>
+
     <div class="grid-3d"></div>
+  </div>
+  <div class="info">
+    <h1 class="info__title">Nested blocks 3D</h1>
+    <p class="info__description">move with <span class="info__key">W</span> <span class="info__key">A</span> <span class="info__key">S</span> <span class="info__key">D</span> keys</p>
   </div>
 </div>
 <script src="javascript/jquery-3.2.1.min.js"></script>

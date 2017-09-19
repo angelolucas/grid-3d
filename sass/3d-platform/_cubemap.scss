@@ -26,7 +26,7 @@ $earth: #99bd90;
 .cubemap__face--side {
   background-image:
     radial-gradient(289% 220% at 50% -25%, $sky 0%, $sky 34%, $horizon 100%), // Sky
-    linear-gradient(to top, #99bd90, #99bd90); // Earth
+    linear-gradient(to top, $earth, $earth); // Earth
   background-position: left top, left bottom;
   background-size: 100% 50%;
 }
