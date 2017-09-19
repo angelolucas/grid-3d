@@ -24,7 +24,7 @@ body:active {
 // Rotate
 .platform-3d__rotate {
   will-change: transform;
-  transform: rotateX(45deg) rotateZ(45deg) translateZ(0);
+  transform: rotateX(45deg) rotateZ(225deg) translateZ(0);
   width: 0;
   height: 0;
   margin: auto;

@@ -1,6 +1,6 @@
 var rotation = {
   x: 45,
-  z: 45
+  z: 225
 };
 
 $(document).ready(function() {

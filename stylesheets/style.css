@@ -13,15 +13,18 @@
   left: 10px;
   font-family: Menlo, Consolas, 'DejaVu Sans Mono', monospace;
   letter-spacing: 0px;
+  user-select: none;
+  pointer-events: none;
 }
 
 .info__title {
   font-size: 18px;
-  margin-bottom: 5px;
+  margin-bottom: 20px;
 }
 
 .info__description {
   font-size: 14px;
+  margin-bottom: 5px;
 }
 
 .info__key {
@@ -58,7 +61,7 @@ body:active {
 
 .platform-3d__rotate {
   will-change: transform;
-  transform: rotateX(45deg) rotateZ(45deg) translateZ(0);
+  transform: rotateX(45deg) rotateZ(225deg) translateZ(0);
   width: 0;
   height: 0;
   margin: auto;
@@ -72,7 +75,7 @@ body:active {
   left: 0;
   top: 0;
   width: 0;
-  height: 20vw;
+  height: 100px;
   border-left-width: 2px;
   border-left-style: solid;
   pointer-events: none;
@@ -86,30 +89,30 @@ body:active {
   color: white;
   padding: 5px;
   text-align: center;
-  font-size: 20px;
+  font-size: 14px;
   position: absolute;
-  width: 100px;
+  width: 70px;
   font-family: Menlo, Consolas, 'DejaVu Sans Mono', monospace;
 }
 
 .first-quadrant {
-  top: -10vw;
-  left: 5vw;
+  top: -50px;
+  left: 30px;
 }
 
 .second-quadrant {
-  top: -10vw;
-  left: -18vw;
+  top: -50px;
+  left: -110px;
 }
 
 .third-quadrant {
-  top: 9vw;
-  left: -18vw;
+  top: 40px;
+  left: -110px;
 }
 
 .fourth-quadrant {
-  top: 9vw;
-  left: 5vw;
+  top: 40px;
+  left: 30px;
 }
 
 .axis:after {
