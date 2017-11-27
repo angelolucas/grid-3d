@@ -218,6 +218,9 @@ body:active {
   transform-origin: top;
 }
 
+.grid-3d {
+  transition: transform 0.1s;
+}
 .grid-3d .b {
   background-color: rgba(255, 255, 255, 0.5);
   border: 1px solid white;
@@ -228,7 +231,11 @@ body:active {
   left: -1px;
   transform-origin: left;
 }
-
+.grid-3d > .b {
+  transform: none !important;
+  left: 2px;
+  top: 2px;
+}
 .grid-3d .b--x {
   transform: translateX(100%);
 }
@@ -236,7 +243,6 @@ body:active {
   content: "X";
   color: white;
 }
-
 .grid-3d .b--y {
   transform: translateY(100%);
   width: 100%;
@@ -246,12 +252,6 @@ body:active {
 .grid-3d .b--y:before {
   content: "Y";
   color: white;
-}
-
-.grid-3d > .b {
-  transform: none !important;
-  left: 3px;
-  top: 3px;
 }
 
 .dg .property-name {
