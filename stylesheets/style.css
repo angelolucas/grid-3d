@@ -70,16 +70,80 @@ body:active {
   flex-direction: column;
 }
 
+/* Axes
+* Represents transform-origin
+*/
+.axes {
+  width: 0px;
+  height: 0px;
+  background: black;
+  transform: translate3d(0%, 0%, -51px);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+
 .axis {
   position: absolute;
   left: 0;
   top: 0;
   width: 0;
   height: 100px;
-  border-left-width: 2px;
-  border-left-style: solid;
+  width: 3px;
   pointer-events: none;
   transform-origin: top;
+}
+
+/* Negative Axis */
+.axis:after {
+  content: "";
+  position: absolute;
+  opacity: 0.1;
+  height: 100%;
+  width: 100%;
+  bottom: 100%;
+  left: 0;
+  transform: rotate(180deg);
+}
+
+/* Perpendicular Axis */
+.axis--perpendicular {
+  transform: rotateY(90deg);
+}
+
+/* X Axis */
+.axis--x {
+  transform: rotateZ(-90deg);
+}
+
+.axis--x,
+.axis--x:after,
+.axis--x .axis--perpendicular,
+.axis--x .axis--perpendicular:after {
+  background: linear-gradient(#ff0000, rgba(0, 0, 0, 0));
+  /* Red */
+}
+
+/* Y Axis */
+.axis--y,
+.axis--y:after,
+.axis--y .axis--perpendicular,
+.axis--y .axis--perpendicular:after {
+  background: linear-gradient(#008000, rgba(0, 0, 0, 0));
+  /* Green */
+}
+
+/* Z Axis */
+.axis--z {
+  transform: rotateX(90deg);
+}
+
+.axis--z,
+.axis--z:after,
+.axis--z .axis--perpendicular,
+.axis--z .axis--perpendicular:after {
+  background: linear-gradient(#0000ff, rgba(0, 0, 0, 0));
+  /* Blue */
 }
 
 .quadrant {
@@ -113,53 +177,6 @@ body:active {
 .fourth-quadrant {
   top: 40px;
   left: 30px;
-}
-
-.axis:after {
-  content: "";
-  position: absolute;
-  border-left-width: 2px;
-  border-left-style: solid;
-  opacity: 0.15;
-  height: 100%;
-  width: 0;
-  bottom: 100%;
-  left: 0;
-  transform: translateX(-100%);
-}
-
-.axis--perpendicular {
-  transform: translateX(-100%) rotateY(90deg);
-}
-
-.axis--x {
-  transform: rotateZ(-90deg);
-  border-color: red;
-}
-
-.axis--x,
-.axis--x:after,
-.axis--x .axis--perpendicular,
-.axis--x .axis--perpendicular:after {
-  border-color: red;
-}
-
-.axis--y,
-.axis--y:after,
-.axis--y .axis--perpendicular,
-.axis--y .axis--perpendicular:after {
-  border-color: green;
-}
-
-.axis--z {
-  transform: rotateX(90deg);
-}
-
-.axis--z,
-.axis--z:after,
-.axis--z .axis--perpendicular,
-.axis--z .axis--perpendicular:after {
-  border-color: blue;
 }
 
 .cubemap {
