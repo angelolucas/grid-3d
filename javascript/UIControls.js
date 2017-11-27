@@ -1,10 +1,10 @@
 var gui = new dat.GUI({width: 400});
 
 gui.add(control, 'width', 2, 100).onChange(function(){
-  transform();
+  styleGridX();
 });
 gui.add(control, 'height', 2, 100).onChange(function(){
-  transform();
+  styleGridX();
 });
 gui.add(control, 'perspective', 300, 1000).onChange(function(){
   perspective();
@@ -14,32 +14,51 @@ gui.add(control, 'perspective', 300, 1000).onChange(function(){
 var gridX = gui.addFolder('Grid X');
 gridX.open();
 
-gridX.add(control, 'rotateX', -180, 180).onChange(function(){
-  if(control.rotateX > -1 && control.rotateX < 1)
-    control.rotateX = 0;
+gridX.add(control.gridX, 'rotateX', -180, 180).onChange(function(){
+  if(control.gridX.rotateX > -1 && control.gridX.rotateX < 1)
+    control.gridX.rotateX = 0;
 
-  transform();
+  styleGridX();
 });
-gridX.add(control, 'rotateY', -180, 180).onChange(function(){
-  if(control.rotateY > -1 && control.rotateY < 1)
-    control.rotateY = 0;
+gridX.add(control.gridX, 'rotateY', -180, 180).onChange(function(){
+  if(control.gridX.rotateY > -1 && control.gridX.rotateY < 1)
+    control.gridX.rotateY = 0;
 
-  transform();
+  styleGridX();
 });
-gridX.add(control, 'rotateZ', -180, 180).onChange(function(){
-  if(control.rotateZ > -1 && control.rotateZ < 1)
-    control.rotateZ = 0;
+gridX.add(control.gridX, 'rotateZ', -180, 180).onChange(function(){
+  if(control.gridX.rotateZ > -1 && control.gridX.rotateZ < 1)
+    control.gridX.rotateZ = 0;
 
-  transform();
+  styleGridX();
 });
-gridX.add(control, 'layersX', 0, 40).step(1).onChange(function(){
-  layersX();
+gridX.add(control.gridX, 'length', 0, 20).step(1).onChange(function(){
+  Xlength();
 });
 
 // Grid Y Folder
 var gridY = gui.addFolder('Grid Y');
-gridY.add(control, 'layersY', 0, 40).step(1).onChange(function(){
-  layersY();
+
+gridY.add(control.gridY, 'rotateX', -180, 180).onChange(function(){
+  if(control.gridY.rotateX > -1 && control.gridY.rotateX < 1)
+    control.gridY.rotateX = 0;
+
+  styleGridY();
+});
+gridY.add(control.gridY, 'rotateY', -180, 180).onChange(function(){
+  if(control.gridY.rotateY > -1 && control.gridY.rotateY < 1)
+    control.gridY.rotateY = 0;
+
+  styleGridY();
+});
+gridY.add(control.gridY, 'rotateZ', -180, 180).onChange(function(){
+  if(control.gridY.rotateZ > -1 && control.gridY.rotateZ < 1)
+    control.gridY.rotateZ = 0;
+
+  styleGridY();
+});
+gridY.add(control.gridY, 'length', 0, 20).step(1).onChange(function(){
+  Ylength();
 });
 
 gridY.open();
