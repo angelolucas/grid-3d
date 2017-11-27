@@ -9,13 +9,23 @@
 
   transform-origin: left;
 }
-.grid-3d .b--X{
+.grid-3d .b--x{
   transform: translateX(100%);
+
+  &:after {
+    content: "X";
+    color: white;
+  }
 }
 .grid-3d .b--y{
   transform: translateY(100%);
   width: 100%;
   height: 100%;
+
+  &:before {
+    content: "Y";
+    color: white;
+  }
 }
 .grid-3d > .b {
   transform: none!important;

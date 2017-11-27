@@ -44,15 +44,21 @@ var layersY = function() {
 };
 
 var transform = function() {
-  $('.grid-3d .b--x').css({
-    'transform':
-      'translateX(' + 100 + '%)' +
-      'rotateX(' + control.rotateX + 'deg)' +
-      'rotateY(' + control.rotateY + 'deg)' +
-      'rotateZ(' + control.rotateZ + 'deg)',
-    'width': control.width,
-    'height': control.height
-  });
+  var styleTag = $('style[data-type="UIControls"]');
+
+  styleTag.empty();
+
+  styleTag.append(
+    '.grid-3d .b--x {' +
+      'transform:' +
+        'translateX(' + 100 + '%)' +
+        'rotateX(' + control.rotateX + 'deg)' +
+        'rotateY(' + control.rotateY + 'deg)' +
+        'rotateZ(' + control.rotateZ + 'deg);' +
+      'width:' + control.width + 'px;' +
+      'height:' + control.height + 'px;' +
+    '};'
+  );
 };
 
 $( window ).ready(function() {
