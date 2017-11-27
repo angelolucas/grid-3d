@@ -73,6 +73,7 @@
 .quadrant {
   transform: translateZ(1px);
   user-select: none;
+  -webkit-user-select: none;
   background: red;
   color: white;
   padding: 5px;

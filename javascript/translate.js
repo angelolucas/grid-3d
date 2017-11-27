@@ -66,7 +66,7 @@ $(document).ready(function() {
   var translate = function() {
     $('.grid-3d').css({
       'transform': 'translate3d(' + values.x + 'px, ' + values.y + 'px, 0px)'
-    })
-  }
+    });
+  };
 
 });
