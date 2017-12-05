@@ -1,6 +1,8 @@
 $(document).ready(function() {
 
-  var speed = 9;
+  var speed = 2;
+  var speedRatio;
+  var speedPercente = 0;
   var front = 119; // W key
   var back = 115; // S key
   var left = 97; // D key
@@ -15,7 +17,7 @@ $(document).ready(function() {
     var quadrant = 1;
     var quadrantDegree = rotation.z;
 
-    // Find Quadrant Based on Rotation
+    // Find Quadrant Based on Z Rotation
     if (rotation.z > 90 && rotation.z <= 180) {
       quadrant = 2;
       quadrantDegree -= 90;
@@ -41,9 +43,21 @@ $(document).ready(function() {
       quadrant -= 4;
     }
 
+    // Calcula relação de velocidade XY ou Z
+    if (rotation.x < 90) {
+      speedRatio = rotation.x * 1 / 90;
+    } else if (rotation.x > 90 && rotation.x <= 180) {
+      speedRatio = 1 - (rotation.x - 90) * 1 / 90;
+    } else if (rotation.x > 180 && rotation.x <= 270) {
+      speedRatio = - ( (rotation.x - 180) * 1 / 90);
+    } else if (rotation.x > 270) {
+      speedRatio = - (1 - (rotation.x - 270) * 1 / 90);
+    }
+    speedPercente = speedRatio * speed / 1;
+
     var rotationPercent = (quadrantDegree * 100 / 90) / 100;
-    var translateBasedOnRotation = rotationPercent * speed;
-    var restTranslateBasedOnRotation = (1 - rotationPercent) * speed;
+    var translateBasedOnRotation = rotationPercent * speedPercente;
+    var restTranslateBasedOnRotation = (1 - rotationPercent) * speedPercente;
 
     // Apply values
     if (quadrant === 1) {
