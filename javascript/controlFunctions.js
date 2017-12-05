@@ -88,4 +88,5 @@ $( window ).ready(function() {
   perspective();
   Xlength();
   styleGridX();
+  styleGridY();
 });
