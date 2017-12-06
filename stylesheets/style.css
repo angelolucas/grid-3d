@@ -151,6 +151,7 @@ body:active {
   transform: translateZ(1px);
   user-select: none;
   -webkit-user-select: none;
+  pointer-events: none;
   background: red;
   color: white;
   padding: 5px;
@@ -159,6 +160,9 @@ body:active {
   position: absolute;
   width: 70px;
   font-family: Menlo, Consolas, 'DejaVu Sans Mono', monospace;
+}
+.quadrant:before {
+  content: attr(data-info);
 }
 
 .first-quadrant {
