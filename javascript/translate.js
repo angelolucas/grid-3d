@@ -78,7 +78,7 @@ $(document).ready(function() {
   })
 
   var translate = function() {
-    $('.grid-3d').css({
+    $('.object').css({
       'transform': 'translate3d(' + values.x + 'px, ' + values.y + 'px, 0px)'
     });
   };

@@ -22,7 +22,7 @@ var perspective = function() {
 
 // layers X
 var Xlength = function() {
-  $('.grid-3d').find('> .b').remove();
+  $('.object').find('> .b').remove();
 
   var blocks = '';
 
@@ -30,7 +30,7 @@ var Xlength = function() {
     blocks += '<div class="b b--x" data-b="' + i + '">';
   }
 
-  $('.grid-3d').append(blocks);
+  $('.object').append(blocks);
 
   Ylength();
 };
@@ -38,7 +38,7 @@ var Xlength = function() {
 // layers Y
 var Ylength = function() {
   for(var x = 0; x < control.gridX.length; x++) {
-    var position = $('.grid-3d').find('.b[data-b="' + x + '"]');
+    var position = $('.object').find('.b[data-b="' + x + '"]');
     position.find('> .b--y').remove();
     var blocks = '';
 
@@ -55,7 +55,7 @@ var styleGridY = function() {
   styleTag.empty();
 
   styleTag.append(
-    '.grid-3d .b--y {' +
+    '.object .b--y {' +
       'transform:' +
         'translateY(' + 100 + '%)' +
         'rotateX(' + control.gridY.rotateX + 'deg)' +
@@ -71,7 +71,7 @@ var styleGridX = function() {
   styleTag.empty();
 
   styleTag.append(
-    '.grid-3d .b--x {' +
+    '.object .b--x {' +
       'transform:' +
         'translateX(' + 100 + '%)' +
         'rotateX(' + control.gridX.rotateX + 'deg)' +

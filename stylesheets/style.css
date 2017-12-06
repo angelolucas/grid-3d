@@ -220,10 +220,10 @@ body:active {
   transform-origin: top;
 }
 
-.grid-3d {
+.object {
   transition: transform 0.1s;
 }
-.grid-3d .b {
+.object .b {
   background-color: rgba(255, 255, 255, 0.5);
   border: 1px solid white;
   position: absolute;
@@ -233,25 +233,25 @@ body:active {
   left: -1px;
   transform-origin: left;
 }
-.grid-3d > .b {
+.object > .b {
   transform: none !important;
   left: 2px;
   top: 2px;
 }
-.grid-3d .b--x {
+.object .b--x {
   transform: translateX(100%);
 }
-.grid-3d .b--x:after {
+.object .b--x:after {
   content: "X";
   color: white;
 }
-.grid-3d .b--y {
+.object .b--y {
   transform: translateY(100%);
   width: 100%;
   height: 100%;
   transform-origin: top;
 }
-.grid-3d .b--y:before {
+.object .b--y:before {
   content: "Y";
   color: white;
 }
