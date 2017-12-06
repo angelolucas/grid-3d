@@ -17,7 +17,7 @@ var control = {
 };
 
 var perspective = function() {
-  $('.platform-3d').css('perspective', control.perspective);
+  $('.general').css('perspective', control.perspective);
 };
 
 // layers X

@@ -45,7 +45,7 @@ body:active {
   cursor: -webkit-grabbing;
 }
 
-.platform-3d {
+.general {
   position: relative;
   perspective: 800px;
   width: 100vw;
@@ -55,7 +55,7 @@ body:active {
   display: flex;
   overflow: hidden;
 }
-.platform-3d * {
+.general * {
   transform-style: preserve-3d;
   box-sizing: content-box;
 }

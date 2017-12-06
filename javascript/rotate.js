@@ -13,11 +13,11 @@ $(document).ready(function() {
   };
   var rotationActive = false;
 
-  $('.platform-3d').on('mousedown ', function(e) {
+  $('.general').on('mousedown ', function(e) {
     var startX = e.pageX;
     var startY = e.pageY;
 
-    $('.platform-3d').on('mousemove', function(e) {
+    $('.general').on('mousemove', function(e) {
       var deltaX;
       var deltaY;
 
@@ -51,9 +51,9 @@ $(document).ready(function() {
       $demo.css('transform', 'rotateX(' + rotation.x + 'deg) rotateZ(' + rotation.z + 'deg)');
     });
 
-    $('.platform-3d').on('mouseup', function(e) {
-      $('.platform-3d').off('mousemove');
-      $('.platform-3d').off('mouseup');
+    $('.general').on('mouseup', function(e) {
+      $('.general').off('mousemove');
+      $('.general').off('mouseup');
       rotationActive = false;
       prevValues.x = 0;
       prevValues.y = 0;
