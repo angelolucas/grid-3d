@@ -5,7 +5,7 @@ var rotation = {
 
 $(document).ready(function() {
 
-  var $demo = $('.platform-3d__rotate');
+  var $demo = $('.object-container');
 
   var prevValues = {
     x: 0,

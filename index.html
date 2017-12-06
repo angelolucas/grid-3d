@@ -9,7 +9,12 @@
 </head>
 <body>
 <div class="general">
-  <div class="platform-3d__rotate">
+  <div class="object-container">
+
+    <!-- Object -->
+    <div class="object"></div>
+
+    <!-- Axis -->
     <div class="axis axis--x">
       <span class="quadrant first-quadrant">1˚/x+/y+</span>
       <span class="quadrant second-quadrant">2˚/x+/y-</span>
@@ -24,6 +29,7 @@
       <div class="axis axis--perpendicular"></div>
     </div>
 
+    <!-- Cubemap -->
     <div class="cubemap">
       <div class="cubemap__face cubemap__face--side">
         <div class="cubemap__face cubemap__face--top"></div>
@@ -36,21 +42,30 @@
         </div>
       </div>
     </div>
-
-    <div class="object"></div>
   </div>
+
+  <!-- Side Informations -->
   <div class="info">
     <h1 class="info__title">Nested blocks 3D</h1>
-    <p class="info__description">move with <span class="info__key">W</span> <span class="info__key">A</span> <span class="info__key">S</span> <span class="info__key">D</span> keys.</p>
-    <p class="info__description">Rotate by dragging</p>
+    <p class="info__description">
+      move with
+      <span class="info__key">W</span>
+      <span class="info__key">A</span>
+      <span class="info__key">S</span>
+      <span class="info__key">D</span>
+      keys.
     </p>
+    <p class="info__description">Rotate by dragging</p>
   </div>
 </div>
+
+<!-- Scripts -->
 <script src="javascript/dependencies/jquery-3.2.1.min.js"></script>
 <script src="javascript/dependencies/dat.gui.min.js"></script>
 <script src="javascript/controlFunctions.js"></script>
 <script src="javascript/UIControls.js"></script>
 <script src="javascript/rotate.js"></script>
 <script src="javascript/translate.js"></script>
+
 </body>
 </html>
