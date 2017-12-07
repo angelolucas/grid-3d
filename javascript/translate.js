@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-  var speed = 2;
+  var speed = 15;
   var speedRatio;
   var speedPercente = 0;
   var front = 119; // W key
