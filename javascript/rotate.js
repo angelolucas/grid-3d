@@ -13,18 +13,14 @@ var settings = {
   prevY: 0
 };
 
+
 settings.selector.general.on('mousedown ', function(e) {
-  var startX = e.pageX;
-  var startY = e.pageY;
+  settings.prevX = e.pageX;
+  settings.prevY = e.pageY;
 
   settings.selector.general.on('mousemove', function(e) {
-    var deltaX = 0;
-    var deltaY = 0;
-
-    if (!settings.firstMove) {
-      deltaX = settings.prevX - e.pageX;
-      deltaY = settings.prevY - e.pageY;
-    }
+    var deltaX = settings.prevX - e.pageX;
+    var deltaY = settings.prevY - e.pageY;
 
     settings.prevX = e.pageX;
     settings.prevY = e.pageY;
@@ -45,16 +41,10 @@ settings.selector.general.on('mousedown ', function(e) {
       rotation.z += 360;
     }
 
-    settings.firstMove = false;
-
     settings.selector.container.css('transform', 'rotateX(' + rotation.x + 'deg) rotateZ(' + rotation.z + 'deg)');
   });
 
   settings.selector.general.on('mouseup', function(e) {
     $(this).off('mousemove');
-    $(this).off('mouseup');
-    settings.firstMove = true;
-    settings.prevX = 0;
-    settings.prevY = 0;
   });
 });
