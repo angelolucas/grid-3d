@@ -1,46 +1,80 @@
-var selector = {
-  general: $('.general'),
-  container: $('.object-container')
-};
-
-var rotation = {
+var Rotate = {
   x: 45,
   z: 225,
-  prevX: 0,
-  prevY: 0
+  hx: 0,
+  hy: 0,
+  function: null,
 };
 
-selector.general.on('mousedown ', function(e) {
-  rotation.prevX = e.pageX;
-  rotation.prevY = e.pageY;
+Rotate.function = function() {
 
-  selector.general.on('mousemove', function(e) {
-    var deltaX = rotation.prevX - e.pageX;
-    var deltaY = rotation.prevY - e.pageY;
+  var selector = {
+    general: $('.general'),
+    container: $('.object-container')
+  };
 
-    rotation.prevX = e.pageX;
-    rotation.prevY = e.pageY;
+  selector.general.on('mousedown ', function(e) {
+    var prevX = e.pageX;
+    var prevY = e.pageY;
 
-    rotation.x += deltaY * 100 / 360;
-    rotation.z += deltaX * 100 / 360;
+    selector.general.on('mousemove', function(e) {
+      var deltaX = prevX - e.pageX;
+      var deltaY = prevY - e.pageY;
 
-    // Keep degrees from 0˚ to 360˚
-    if (rotation.x > 360) {
-      rotation.x -= 360;
-    } else if (rotation.x < 0) {
-      rotation.x += 360;
-    }
+      prevX = e.pageX;
+      prevY = e.pageY;
 
-    if (rotation.z > 360) {
-      rotation.z -= 360;
-    } else if (rotation.z < 0) {
-      rotation.z += 360;
-    }
+      Rotate.x += deltaY * 100 / 360;
+      Rotate.z += deltaX * 100 / 360;
 
-    selector.container.css('transform', 'rotateX(' + rotation.x + 'deg) rotateZ(' + rotation.z + 'deg)');
+      // Keep degrees from 0˚ to 360˚
+      if (Rotate.x > 360) {
+        Rotate.x -= 360;
+      } else if (Rotate.x < 0) {
+        Rotate.x += 360;
+      }
+
+      if (Rotate.z > 360) {
+        Rotate.z -= 360;
+      } else if (Rotate.z < 0) {
+        Rotate.z += 360;
+      }
+
+      // Valores X e Y Horizontal
+      if (Rotate.z <= 90) {
+        Rotate.hx = Rotate.z * 1 / 90;
+        Rotate.hy = 1 - Rotate.z * 1 / 90;
+
+      } else if (Rotate.z > 90 && Rotate.z <= 180) {
+
+        Rotate.hx = 1 - (Rotate.z - 90) * 1 / 90;
+        Rotate.hy = - (Rotate.z - 90) * 1 / 90;
+
+      } else if (Rotate.z > 180 && Rotate.z <= 270) {
+
+        Rotate.hx = - (Rotate.z - 180) * 1 / 90;
+        Rotate.hy = - (1 - (Rotate.z - 180) * 1 / 90);
+
+      } else {
+
+        Rotate.hx = - (1 - (Rotate.z - 270) * 1 / 90);
+        Rotate.hy = (Rotate.z - 270) * 1 / 90;
+      }
+
+      Rotate.hx = (Rotate.hx).toFixed(3);
+      Rotate.hy = (Rotate.hy).toFixed(3);
+
+      //console.log(Rotate.hx, Rotate.hy);
+
+      selector.container.css('transform', 'rotateX(' + Rotate.x + 'deg) rotateZ(' + Rotate.z + 'deg)');
+    });
+
+    selector.general.on('mouseup', function(e) {
+      $(this).off('mousemove');
+    });
   });
+};
 
-  selector.general.on('mouseup', function(e) {
-    $(this).off('mousemove');
-  });
-});
+$( document ).ready( function() {
+  Rotate.function();
+} );
