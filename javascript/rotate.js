@@ -1,29 +1,25 @@
-var rotation = {
-  x: 45,
-  z: 225
+var selector = {
+  general: $('.general'),
+  container: $('.object-container')
 };
 
-var settings = {
-  selector: {
-    general: $('.general'),
-    container: $('.object-container')
-  },
-  firstMove: true,
+var rotation = {
+  x: 45,
+  z: 225,
   prevX: 0,
   prevY: 0
 };
 
+selector.general.on('mousedown ', function(e) {
+  rotation.prevX = e.pageX;
+  rotation.prevY = e.pageY;
 
-settings.selector.general.on('mousedown ', function(e) {
-  settings.prevX = e.pageX;
-  settings.prevY = e.pageY;
+  selector.general.on('mousemove', function(e) {
+    var deltaX = rotation.prevX - e.pageX;
+    var deltaY = rotation.prevY - e.pageY;
 
-  settings.selector.general.on('mousemove', function(e) {
-    var deltaX = settings.prevX - e.pageX;
-    var deltaY = settings.prevY - e.pageY;
-
-    settings.prevX = e.pageX;
-    settings.prevY = e.pageY;
+    rotation.prevX = e.pageX;
+    rotation.prevY = e.pageY;
 
     rotation.x += deltaY * 100 / 360;
     rotation.z += deltaX * 100 / 360;
@@ -41,10 +37,10 @@ settings.selector.general.on('mousedown ', function(e) {
       rotation.z += 360;
     }
 
-    settings.selector.container.css('transform', 'rotateX(' + rotation.x + 'deg) rotateZ(' + rotation.z + 'deg)');
+    selector.container.css('transform', 'rotateX(' + rotation.x + 'deg) rotateZ(' + rotation.z + 'deg)');
   });
 
-  settings.selector.general.on('mouseup', function(e) {
+  selector.general.on('mouseup', function(e) {
     $(this).off('mousemove');
   });
 });
