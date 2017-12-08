@@ -246,7 +246,6 @@ body:active {
   transform: translateX(100%);
 }
 .object .b--x:after {
-  content: "X";
   color: white;
 }
 .object .b--y {
@@ -256,7 +255,6 @@ body:active {
   transform-origin: top;
 }
 .object .b--y:before {
-  content: "Y";
   color: white;
 }
 

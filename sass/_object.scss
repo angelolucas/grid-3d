@@ -20,7 +20,7 @@
     transform: translateX(100%);
 
     &:after {
-      content: "X";
+      //content: "X";
       color: white;
     }
   }
@@ -31,7 +31,7 @@
     transform-origin: top;
 
     &:before {
-      content: "Y";
+      //content: "Y";
       color: white;
     }
   }

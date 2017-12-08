@@ -1,11 +1,13 @@
 var Translate = {
-  keys: {
+  direction: {
     front: 119, // W key
     left: 97, // S key
     back: 115, // D key
     right: 100 // A key
   },
   speed: 5,
+  x: null,
+  y: null,
   function: null
 }
 
@@ -16,19 +18,29 @@ Translate.function = function() {
     object: $('.object')
   };
 
+  var reverse = function(i) {
+    return i - (i * 2);
+  }
+
   selector.doc.keypress(function(e) {
 
-    console.log(Rotate.hx, Translate.speed);
+    if (Translate.direction.front === e.which) {
 
-    //translate();
-  })
+      Translate.x += Rotate.hx * Translate.speed;
+      Translate.y += Rotate.hy * Translate.speed;
 
-  var translate = function() {
+    } else if (Translate.direction.back === e.which) {
+
+      Translate.x += reverse(Rotate.hx) * Translate.speed;
+      Translate.y += reverse(Rotate.hy) * Translate.speed;
+
+    } 
+
+    // Apply values
     selector.object.css({
-      'transform': 'translate3d(' + values.x + 'px, ' + values.y + 'px, 0px)'
+      'transform': 'translate3d(' + Translate.x + 'px, ' + Translate.y + 'px, 0px)'
     });
-  };
-
+  })
 };
 
 $( document ).ready( function() {

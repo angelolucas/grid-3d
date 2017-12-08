@@ -1,8 +1,8 @@
 var Rotate = {
   x: 45,
   z: 225,
-  hx: 0,
-  hy: 0,
+  hx: -0.5,
+  hy: -0.5,
   function: null,
 };
 
