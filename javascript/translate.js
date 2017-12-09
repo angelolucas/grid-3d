@@ -29,12 +29,22 @@ Translate.function = function() {
       Translate.x += Rotate.hx * Translate.speed;
       Translate.y += Rotate.hy * Translate.speed;
 
+    } else if (Translate.direction.left === e.which) {
+
+      Translate.x += Rotate.hy * Translate.speed;
+      Translate.y -= Rotate.hx * Translate.speed;
+
     } else if (Translate.direction.back === e.which) {
 
-      Translate.x += reverse(Rotate.hx) * Translate.speed;
-      Translate.y += reverse(Rotate.hy) * Translate.speed;
+      Translate.x -= Rotate.hx * Translate.speed;
+      Translate.y -= Rotate.hy * Translate.speed;
 
-    } 
+    } else if (Translate.direction.right === e.which) {
+
+      Translate.x -= Rotate.hy * Translate.speed;
+      Translate.y += Rotate.hx * Translate.speed;
+
+    }
 
     // Apply values
     selector.object.css({
