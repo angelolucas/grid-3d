@@ -26,23 +26,23 @@ Translate.function = function() {
 
     if (Translate.direction.front === e.which) {
 
-      Translate.x += Rotate.hx * Translate.speed;
-      Translate.y += Rotate.hy * Translate.speed;
+      Translate.x += Rotate.ratio.x * Translate.speed;
+      Translate.y += Rotate.ratio.y * Translate.speed;
 
     } else if (Translate.direction.left === e.which) {
 
-      Translate.x += Rotate.hy * Translate.speed;
-      Translate.y -= Rotate.hx * Translate.speed;
+      Translate.x += Rotate.ratio.y * Translate.speed;
+      Translate.y -= Rotate.ratio.x * Translate.speed;
 
     } else if (Translate.direction.back === e.which) {
 
-      Translate.x -= Rotate.hx * Translate.speed;
-      Translate.y -= Rotate.hy * Translate.speed;
+      Translate.x -= Rotate.ratio.x * Translate.speed;
+      Translate.y -= Rotate.ratio.y * Translate.speed;
 
     } else if (Translate.direction.right === e.which) {
 
-      Translate.x -= Rotate.hy * Translate.speed;
-      Translate.y += Rotate.hx * Translate.speed;
+      Translate.x -= Rotate.ratio.y * Translate.speed;
+      Translate.y += Rotate.ratio.x * Translate.speed;
 
     }
 
