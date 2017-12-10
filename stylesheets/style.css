@@ -11,7 +11,7 @@
   position: absolute;
   top: 10px;
   left: 10px;
-  font-family: Menlo, Consolas, 'DejaVu Sans Mono', monospace;
+  font-family: Menlo, Consolas, "DejaVu Sans Mono", monospace;
   letter-spacing: 0px;
   user-select: none;
   -webkit-user-select: none;
@@ -159,7 +159,7 @@ body:active {
   font-size: 14px;
   position: absolute;
   width: 70px;
-  font-family: Menlo, Consolas, 'DejaVu Sans Mono', monospace;
+  font-family: Menlo, Consolas, "DejaVu Sans Mono", monospace;
 }
 .quadrant:before {
   content: attr(data-info);
@@ -263,10 +263,10 @@ body:active {
 }
 
 .dg .c {
-  width: calc( 100% - 100px) !important;
+  width: calc(100% - 100px) !important;
 }
 
-.dg .has-slider input[type=text] {
+.dg .has-slider input[type="text"] {
   width: 15% !important;
 }
 

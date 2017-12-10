@@ -9,46 +9,40 @@ var Translate = {
   x: null,
   y: null,
   function: null
-}
+};
 
 Translate.function = function() {
-
   var selector = {
     doc: $(document),
-    object: $('.object')
+    object: $(".object")
   };
 
   selector.doc.keypress(function(e) {
+    var translateX = Rotate.ratio.x * Translate.speed;
+    var translateY = Rotate.ratio.y * Translate.speed;
 
     if (Translate.direction.front === e.which) {
-
-      Translate.x += Rotate.ratio.x * Translate.speed;
-      Translate.y += Rotate.ratio.y * Translate.speed;
-
+      Translate.x += translateX;
+      Translate.y += translateY;
     } else if (Translate.direction.left === e.which) {
-
-      Translate.x += Rotate.ratio.y * Translate.speed;
-      Translate.y -= Rotate.ratio.x * Translate.speed;
-
+      Translate.x += translateY;
+      Translate.y -= translateX;
     } else if (Translate.direction.back === e.which) {
-
-      Translate.x -= Rotate.ratio.x * Translate.speed;
-      Translate.y -= Rotate.ratio.y * Translate.speed;
-
+      Translate.x -= translateX;
+      Translate.y -= translateY;
     } else if (Translate.direction.right === e.which) {
-
-      Translate.x -= Rotate.ratio.y * Translate.speed;
-      Translate.y += Rotate.ratio.x * Translate.speed;
-
+      Translate.x -= translateY;
+      Translate.y += translateX;
     }
 
     // Apply values
     selector.object.css({
-      'transform': 'translate3d(' + Translate.x + 'px, ' + Translate.y + 'px, 0px)'
+      transform:
+        "translate3d(" + Translate.x + "px, " + Translate.y + "px, 0px)"
     });
-  })
+  });
 };
 
-$( document ).ready( function() {
+$(document).ready(function() {
   Translate.function();
-} );
+});

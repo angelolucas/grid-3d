@@ -5,7 +5,8 @@ $horizon: white;
 $earth: #99bd90;
 
 .cubemap {
-  transform: translate3d(-50%, -50%, (-$size/2)) rotateX(-90deg) scale3d(100, 100, 100);
+  transform: translate3d(-50%, -50%,  (-$size/2)) rotateX(-90deg)
+    scale3d(100, 100, 100);
   transform-origin: center center ($size/2);
   width: $size;
   height: $size;
@@ -24,8 +25,12 @@ $earth: #99bd90;
   backface-visibility: hidden;
 }
 .cubemap__face--side {
-  background-image:
-    radial-gradient(289% 220% at 50% -25%, $sky 0%, $sky 34%, $horizon 100%), // Sky
+  background-image: radial-gradient(
+      289% 220% at 50% -25%,
+      $sky 0%,
+      $sky 34%,
+      $horizon 100%
+    ),
     linear-gradient(to top, $earth, $earth); // Earth
   background-position: left top, left bottom;
   background-size: 100% 50%;
