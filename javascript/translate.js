@@ -18,10 +18,6 @@ Translate.function = function() {
     object: $('.object')
   };
 
-  var reverse = function(i) {
-    return i - (i * 2);
-  }
-
   selector.doc.keypress(function(e) {
 
     if (Translate.direction.front === e.which) {

@@ -5,7 +5,8 @@ var Rotate = {
   },
   ratio: {
     x: -0.5,
-    y: -0.5
+    y: -0.5,
+    z: 0
   },
   function: null,
 };
@@ -65,10 +66,28 @@ Rotate.function = function() {
         Rotate.ratio.y = (Rotate.deg.z - 270) * 1 / 90;
       }
 
+      // Valor Z Vertical
+      if (Rotate.deg.x <= 90) {
+
+        Rotate.ratio.z = - (1 - Rotate.deg.x * 1 / 90);
+
+      } else if (Rotate.deg.x > 90 && Rotate.deg.x <= 180) {
+
+        Rotate.ratio.z = (Rotate.deg.x - 90) * 1 / 90;
+
+      } else if (Rotate.deg.x > 180 && Rotate.deg.x <= 270) {
+
+        Rotate.ratio.z = 1 - (Rotate.deg.x - 180) * 1 / 90;
+
+      } else {
+
+        Rotate.ratio.z = - ( (Rotate.deg.x - 270) * 1 / 90);
+
+      }
+
       Rotate.ratio.x = (Rotate.ratio.x).toFixed(3);
       Rotate.ratio.y = (Rotate.ratio.y).toFixed(3);
-
-      //console.log(Rotate.ratio.x, Rotate.ratio.y);
+      Rotate.ratio.z = (Rotate.ratio.z).toFixed(3);
 
       selector.container.css('transform', 'rotateX(' + Rotate.deg.x + 'deg) rotateZ(' + Rotate.deg.z + 'deg)');
     });
