@@ -17,6 +17,26 @@ Rotate.function = function() {
     container: $(".object-container")
   };
 
+  /*
+    Quadrant Percent.
+    Porcentagem do grau com relação ao quadrante.
+    Retorna valor de 0 a 1
+
+    exemplos:
+    45˚ = 50% do primeiro quadrante (0-90˚),
+    resultado = 0.500
+
+    120˚ = 33.33% do segundo quadrante (90-180˚)
+    resultado 0.333
+  */
+  var quadrantPercent = function(degree) {
+    var complete = degree / 90;
+    var decimal = complete - Math.floor(complete);
+    var fixed = decimal.toFixed(3);
+
+    return fixed;
+  };
+
   selector.general.on("mousedown ", function(e) {
     var prevX = e.pageX;
     var prevY = e.pageY;
@@ -44,37 +64,34 @@ Rotate.function = function() {
         Rotate.deg.z += 360;
       }
 
+      var horizontalQuadrant = quadrantPercent(Rotate.deg.z);
+      var verticalQuadrant = quadrantPercent(Rotate.deg.x);
+
       // Valores X e Y Horizontal
       if (Rotate.deg.z <= 90) {
-        Rotate.ratio.x = Rotate.deg.z * 1 / 90;
-        Rotate.ratio.y = 1 - Rotate.deg.z * 1 / 90;
+        Rotate.ratio.x = horizontalQuadrant;
+        Rotate.ratio.y = 1 - horizontalQuadrant;
       } else if (Rotate.deg.z > 90 && Rotate.deg.z <= 180) {
-        Rotate.ratio.x = 1 - (Rotate.deg.z - 90) * 1 / 90;
-        Rotate.ratio.y = -(Rotate.deg.z - 90) * 1 / 90;
+        Rotate.ratio.x = 1 - horizontalQuadrant;
+        Rotate.ratio.y = -horizontalQuadrant;
       } else if (Rotate.deg.z > 180 && Rotate.deg.z <= 270) {
-        Rotate.ratio.x = -(Rotate.deg.z - 180) * 1 / 90;
-        Rotate.ratio.y = -(1 - (Rotate.deg.z - 180) * 1 / 90);
+        Rotate.ratio.x = -horizontalQuadrant;
+        Rotate.ratio.y = -(1 - horizontalQuadrant);
       } else {
-        Rotate.ratio.x = -(1 - (Rotate.deg.z - 270) * 1 / 90);
-        Rotate.ratio.y = (Rotate.deg.z - 270) * 1 / 90;
+        Rotate.ratio.x = -(1 - horizontalQuadrant);
+        Rotate.ratio.y = horizontalQuadrant;
       }
 
       // Valor Z Vertical
       if (Rotate.deg.x <= 90) {
-        Rotate.ratio.z = -(1 - Rotate.deg.x * 1 / 90);
+        Rotate.ratio.z = 1 - verticalQuadrant;
       } else if (Rotate.deg.x > 90 && Rotate.deg.x <= 180) {
-        Rotate.ratio.z = (Rotate.deg.x - 90) * 1 / 90;
+        Rotate.ratio.z = -verticalQuadrant;
       } else if (Rotate.deg.x > 180 && Rotate.deg.x <= 270) {
-        Rotate.ratio.z = 1 - (Rotate.deg.x - 180) * 1 / 90;
+        Rotate.ratio.z = -(1 - verticalQuadrant);
       } else {
-        Rotate.ratio.z = -((Rotate.deg.x - 270) * 1 / 90);
+        Rotate.ratio.z = verticalQuadrant;
       }
-
-      Rotate.ratio.x = Rotate.ratio.x.toFixed(3);
-      Rotate.ratio.y = Rotate.ratio.y.toFixed(3);
-      Rotate.ratio.z = Rotate.ratio.z.toFixed(3);
-
-      console.log(Rotate.ratio.x);
 
       selector.container.css(
         "transform",
