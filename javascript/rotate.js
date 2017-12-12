@@ -37,6 +37,53 @@ Rotate.function = function() {
     return fixed;
   };
 
+  var verticalRotation = function(RotateDegree) {
+    // Keep degrees from 0˚ to 360˚
+    if (RotateDegree > 360) {
+      Rotate.deg.x -= 360;
+    } else if (RotateDegree < 0) {
+      Rotate.deg.x += 360;
+    }
+
+    var verticalQuadrant = quadrantPercent(RotateDegree);
+
+    // Valor Z Vertical
+    if (RotateDegree <= 90) {
+      Rotate.ratio.z = 1 - verticalQuadrant;
+    } else if (RotateDegree > 90 && RotateDegree <= 180) {
+      Rotate.ratio.z = -verticalQuadrant;
+    } else if (RotateDegree > 180 && RotateDegree <= 270) {
+      Rotate.ratio.z = -(1 - verticalQuadrant);
+    } else {
+      Rotate.ratio.z = verticalQuadrant;
+    }
+  };
+
+  var horizontalRotation = function(RotateDegree) {
+    if (RotateDegree > 360) {
+      Rotate.deg.z -= 360;
+    } else if (RotateDegree < 0) {
+      Rotate.deg.z += 360;
+    }
+
+    var horizontalQuadrant = quadrantPercent(RotateDegree);
+
+    // Valores X e Y Horizontal
+    if (RotateDegree <= 90) {
+      Rotate.ratio.x = horizontalQuadrant;
+      Rotate.ratio.y = 1 - horizontalQuadrant;
+    } else if (RotateDegree > 90 && RotateDegree <= 180) {
+      Rotate.ratio.x = 1 - horizontalQuadrant;
+      Rotate.ratio.y = -horizontalQuadrant;
+    } else if (RotateDegree > 180 && RotateDegree <= 270) {
+      Rotate.ratio.x = -horizontalQuadrant;
+      Rotate.ratio.y = -(1 - horizontalQuadrant);
+    } else {
+      Rotate.ratio.x = -(1 - horizontalQuadrant);
+      Rotate.ratio.y = horizontalQuadrant;
+    }
+  };
+
   selector.general.on("mousedown ", function(e) {
     var prevX = e.pageX;
     var prevY = e.pageY;
@@ -51,46 +98,12 @@ Rotate.function = function() {
       Rotate.deg.x += deltaY * 100 / 360;
       Rotate.deg.z += deltaX * 100 / 360;
 
-      // Keep degrees from 0˚ to 360˚
-      if (Rotate.deg.x > 360) {
-        Rotate.deg.x -= 360;
-      } else if (Rotate.deg.x < 0) {
-        Rotate.deg.x += 360;
+      if (deltaX) {
+        horizontalRotation(Rotate.deg.z);
       }
 
-      if (Rotate.deg.z > 360) {
-        Rotate.deg.z -= 360;
-      } else if (Rotate.deg.z < 0) {
-        Rotate.deg.z += 360;
-      }
-
-      var horizontalQuadrant = quadrantPercent(Rotate.deg.z);
-      var verticalQuadrant = quadrantPercent(Rotate.deg.x);
-
-      // Valores X e Y Horizontal
-      if (Rotate.deg.z <= 90) {
-        Rotate.ratio.x = horizontalQuadrant;
-        Rotate.ratio.y = 1 - horizontalQuadrant;
-      } else if (Rotate.deg.z > 90 && Rotate.deg.z <= 180) {
-        Rotate.ratio.x = 1 - horizontalQuadrant;
-        Rotate.ratio.y = -horizontalQuadrant;
-      } else if (Rotate.deg.z > 180 && Rotate.deg.z <= 270) {
-        Rotate.ratio.x = -horizontalQuadrant;
-        Rotate.ratio.y = -(1 - horizontalQuadrant);
-      } else {
-        Rotate.ratio.x = -(1 - horizontalQuadrant);
-        Rotate.ratio.y = horizontalQuadrant;
-      }
-
-      // Valor Z Vertical
-      if (Rotate.deg.x <= 90) {
-        Rotate.ratio.z = 1 - verticalQuadrant;
-      } else if (Rotate.deg.x > 90 && Rotate.deg.x <= 180) {
-        Rotate.ratio.z = -verticalQuadrant;
-      } else if (Rotate.deg.x > 180 && Rotate.deg.x <= 270) {
-        Rotate.ratio.z = -(1 - verticalQuadrant);
-      } else {
-        Rotate.ratio.z = verticalQuadrant;
+      if (deltaY) {
+        verticalRotation(Rotate.deg.x);
       }
 
       selector.container.css(
