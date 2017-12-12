@@ -38,6 +38,7 @@
 }
 
 body {
+  background-color: #99bd90;
   cursor: -webkit-grab;
 }
 
@@ -60,15 +61,20 @@ body:active {
   box-sizing: content-box;
 }
 
-.object-container {
-  will-change: transform;
-  transform: rotateX(45deg) rotateZ(225deg) translateZ(0);
-  width: 0;
-  height: 0;
-  margin: auto;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
+body:after {
+  content: "";
+  background-color: #99bd90;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+body.init:after {
+  transition: 0.3s 0s opacity, 0s 0.3s right;
+  opacity: 0;
+  right: 100%;
 }
 
 /* Axes
@@ -222,6 +228,16 @@ body:active {
   background-color: #99bd90;
   transform: translateY(99.9%) rotateX(90deg);
   transform-origin: top;
+}
+
+.object-container {
+  will-change: transform;
+  width: 0;
+  height: 0;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
 .object {

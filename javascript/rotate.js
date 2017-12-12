@@ -4,9 +4,9 @@ var Rotate = {
     z: 225
   },
   ratio: {
-    x: -0.5,
-    y: -0.5,
-    z: 0
+    x: null,
+    y: null,
+    z: null
   },
   function: null
 };
@@ -37,7 +37,8 @@ Rotate.function = function() {
     return fixed;
   };
 
-  var verticalRotation = function(RotateDegree) {
+  // Vertical Rotation
+  var vertical = function(RotateDegree) {
     // Keep degrees from 0˚ to 360˚
     if (RotateDegree > 360) {
       Rotate.deg.x -= 360;
@@ -59,7 +60,8 @@ Rotate.function = function() {
     }
   };
 
-  var horizontalRotation = function(RotateDegree) {
+  // Horizontal Rotation
+  var horizontal = function(RotateDegree) {
     if (RotateDegree > 360) {
       Rotate.deg.z -= 360;
     } else if (RotateDegree < 0) {
@@ -84,6 +86,21 @@ Rotate.function = function() {
     }
   };
 
+  // Apply CSS Transform
+  var apply = function() {
+    selector.container.css(
+      "transform",
+      "rotateX(" + Rotate.deg.x + "deg) rotateZ(" + Rotate.deg.z + "deg)"
+    );
+  };
+
+  // Initial values
+  vertical(Rotate.deg.x);
+  horizontal(Rotate.deg.z);
+  apply();
+  $("body").addClass("init");
+
+  // On Mouse drag
   selector.general.on("mousedown ", function(e) {
     var prevX = e.pageX;
     var prevY = e.pageY;
@@ -99,17 +116,14 @@ Rotate.function = function() {
       Rotate.deg.z += deltaX * 100 / 360;
 
       if (deltaX) {
-        horizontalRotation(Rotate.deg.z);
+        horizontal(Rotate.deg.z);
       }
 
       if (deltaY) {
-        verticalRotation(Rotate.deg.x);
+        vertical(Rotate.deg.x);
       }
 
-      selector.container.css(
-        "transform",
-        "rotateX(" + Rotate.deg.x + "deg) rotateZ(" + Rotate.deg.z + "deg)"
-      );
+      apply();
     });
 
     selector.general.on("mouseup", function(e) {

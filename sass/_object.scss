@@ -1,3 +1,14 @@
+// Rotate
+.object-container {
+  will-change: transform;
+  width: 0;
+  height: 0;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
 .object {
   transition: transform 0.1s;
 
