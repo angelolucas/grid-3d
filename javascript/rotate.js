@@ -1,13 +1,14 @@
 var Rotate = {
   deg: {
     x: 45,
-    z: 225
+    z: 45
   },
   ratio: {
     x: null,
     y: null,
     z: null
   },
+  speedRatio: null,
   function: null
 };
 
@@ -51,12 +52,16 @@ Rotate.function = function() {
     // Valor Z Vertical
     if (RotateDegree <= 90) {
       Rotate.ratio.z = 1 - verticalQuadrant;
+      Rotate.speedRatio = verticalQuadrant;
     } else if (RotateDegree > 90 && RotateDegree <= 180) {
       Rotate.ratio.z = -verticalQuadrant;
+      Rotate.speedRatio = 1 - verticalQuadrant;
     } else if (RotateDegree > 180 && RotateDegree <= 270) {
       Rotate.ratio.z = -(1 - verticalQuadrant);
+      Rotate.speedRatio = -verticalQuadrant;
     } else {
       Rotate.ratio.z = verticalQuadrant;
+      Rotate.speedRatio = -(1 - verticalQuadrant);
     }
   };
 
