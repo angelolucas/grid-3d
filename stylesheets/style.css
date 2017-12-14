@@ -113,6 +113,24 @@ body.init:after {
   transform: rotate(180deg);
 }
 
+/* Diagonal Axis */
+.axis--test-container {
+  position: relative;
+  transform: rotateZ(-45deg);
+}
+
+.axis--test {
+  position: absolute;
+  opacity: 1;
+  background: yellow;
+  height: 400px;
+  width: 3px;
+  left: 0;
+  bottom: 0;
+  transform-origin: left top;
+  transform: rotatex(45deg);
+}
+
 /* Perpendicular Axis */
 .axis--perpendicular {
   transform: rotateY(90deg);

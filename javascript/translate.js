@@ -19,9 +19,11 @@ Translate.function = function() {
   };
 
   selector.doc.keypress(function(e) {
-    var translateX = Rotate.ratio.x * Translate.speed;
-    var translateY = Rotate.ratio.y * Translate.speed;
-    var translateZ = Rotate.ratio.z * Translate.speed;
+    var speedH = Rotate.speedRatio * Translate.speed / 1;
+
+    var translateX = Rotate.ratio.x * speedH;
+    var translateY = Rotate.ratio.y * speedH;
+    var translateZ = Rotate.ratio.z * speedV;
 
     if (Translate.direction.front === e.which) {
       Translate.x += translateX;
