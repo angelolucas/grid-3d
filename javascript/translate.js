@@ -47,7 +47,13 @@ Translate.function = function() {
     // Apply values
     selector.object.css({
       transform:
-        "translate3d(" + Translate.x + "px, " + Translate.y + "px, " + 0 + "px)"
+        "translate3d(" +
+        Translate.x +
+        "px, " +
+        Translate.y +
+        "px, " +
+        Translate.z +
+        "px)"
     });
   });
 };
