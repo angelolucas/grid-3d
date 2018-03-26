@@ -68,5 +68,3 @@ gridY
   });
 
 gridY.open();
-
-gui.close();
