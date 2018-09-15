@@ -5,15 +5,15 @@ class Axis extends Component {
   render() {
     return (
       <div>
-        <span class="axis axis--test-container" />
-        <div class="axis axis--x">
-          <div class="axis axis--perpendicular" />
+        <span className="axis axis--test-container" />
+        <div className="axis axis--x">
+          <div className="axis axis--perpendicular" />
         </div>
-        <div class="axis axis--y">
-          <div class="axis axis--perpendicular" />
+        <div className="axis axis--y">
+          <div className="axis axis--perpendicular" />
         </div>
-        <div class="axis axis--z">
-          <div class="axis axis--perpendicular" />
+        <div className="axis axis--z">
+          <div className="axis axis--perpendicular" />
         </div>
       </div>
     );
