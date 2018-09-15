@@ -5,7 +5,6 @@ class Axis extends Component {
   render() {
     return (
       <div>
-        <span className="axis axis--test-container" />
         <div className="axis axis--x">
           <div className="axis axis--perpendicular" />
         </div>
