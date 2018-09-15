@@ -1,7 +1,6 @@
 /* Axis
 * Represents transform-origin
 */
-
 .axis {
   width: 0px;
   height: 0px;
@@ -25,7 +24,7 @@
 
 /* Negative Axis */
 .axis:after {
-  content: "";
+  content: '';
   position: absolute;
   opacity: 0.1;
   height: 100%;
@@ -40,6 +39,7 @@
   position: relative;
   transform: rotateZ(-45deg);
 }
+
 .axis--test {
   position: absolute;
   opacity: 1;
@@ -61,11 +61,13 @@
 .axis--x {
   transform: rotateZ(-90deg);
 }
+
 .axis--x,
 .axis--x:after,
 .axis--x .axis--perpendicular,
 .axis--x .axis--perpendicular:after {
-  background: linear-gradient(red, transparent); /* Red */
+  background: linear-gradient(#ff0000, rgba(0, 0, 0, 0));
+  /* Red */
 }
 
 /* Y Axis */
@@ -73,51 +75,19 @@
 .axis--y:after,
 .axis--y .axis--perpendicular,
 .axis--y .axis--perpendicular:after {
-  background: linear-gradient(green, transparent); /* Green */
+  background: linear-gradient(#008000, rgba(0, 0, 0, 0));
+  /* Green */
 }
 
 /* Z Axis */
 .axis--z {
   transform: rotateX(90deg);
 }
+
 .axis--z,
 .axis--z:after,
 .axis--z .axis--perpendicular,
 .axis--z .axis--perpendicular:after {
-  background: linear-gradient(blue, transparent); /* Blue */
-}
-
-.quadrant {
-  transform: translateZ(1px);
-  user-select: none;
-  -webkit-user-select: none;
-  pointer-events: none;
-  background: red;
-  color: white;
-  padding: 5px;
-  text-align: center;
-  font-size: 14px;
-  position: absolute;
-  width: 70px;
-  font-family: Menlo, Consolas, "DejaVu Sans Mono", monospace;
-
-  &:before {
-    content: attr(data-info);
-  }
-}
-.first-quadrant {
-  top: -50px;
-  left: 30px;
-}
-.second-quadrant {
-  top: -50px;
-  left: -110px;
-}
-.third-quadrant {
-  top: 40px;
-  left: -110px;
-}
-.fourth-quadrant {
-  top: 40px;
-  left: 30px;
+  background: linear-gradient(#0000ff, rgba(0, 0, 0, 0));
+  /* Blue */
 }
