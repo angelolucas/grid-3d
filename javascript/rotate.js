@@ -117,8 +117,8 @@ Rotate.function = function() {
       prevX = e.pageX;
       prevY = e.pageY;
 
-      Rotate.deg.x += deltaY * 100 / 360;
-      Rotate.deg.z += deltaX * 100 / 360;
+      Rotate.deg.x += (deltaY * 100) / 360;
+      Rotate.deg.z += (deltaX * 100) / 360;
 
       if (deltaX) {
         horizontal(Rotate.deg.z);
