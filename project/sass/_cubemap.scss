@@ -1,11 +1,10 @@
 $size: 400px;
-
-$sky: #69c3fb;
+$sky: #10a0f9;
 $horizon: white;
-$earth: #99bd90;
+$earth: black;
 
 .cubemap {
-  transform: translate3d(-50%, -50%,  (-$size/2)) rotateX(-90deg)
+  transform: translate3d(-50%, -50%, (-$size/2)) rotateX(-90deg)
     scale3d(100, 100, 100);
   transform-origin: center center ($size/2);
   width: $size;

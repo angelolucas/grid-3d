@@ -5,7 +5,7 @@ var Translate = {
     back: 115, // D key
     right: 100 // A key
   },
-  speed: 5,
+  speed: 12,
   x: null,
   y: null,
   z: null,
@@ -19,8 +19,8 @@ Translate.function = function() {
   };
 
   selector.doc.keypress(function(e) {
-    var speedH = Rotate.speedRatio * Translate.speed / 1;
-    var speedV = Rotate.speedRatio * Translate.speed / 1;
+    var speedH = (Rotate.speedRatio * Translate.speed) / 1;
+    var speedV = (Rotate.speedRatio * Translate.speed) / 1;
 
     var translateX = Rotate.ratio.x * speedH;
     var translateY = Rotate.ratio.y * speedH;
