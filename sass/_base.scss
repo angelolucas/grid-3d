@@ -1,5 +1,5 @@
 body {
-  background-color: #99bd90;
+  background-color: black;
   cursor: -webkit-grab;
 }
 body:active {
@@ -25,7 +25,7 @@ body:active {
 // Intro
 body:after {
   content: "";
-  background-color: #99bd90;
+  background-color: black;
   position: fixed;
   top: 0;
   left: 0;

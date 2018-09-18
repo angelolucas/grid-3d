@@ -7,6 +7,7 @@
   user-select: none;
   -webkit-user-select: none;
   pointer-events: none;
+  color: white;
 }
 
 .info__title {
@@ -22,7 +23,7 @@
   display: inline-block;
   border-radius: 4px;
   padding: 3px 8px 2px;
-  background: black;
+  background: white;
   font-size: 80%;
-  color: white;
+  color: black;
 }

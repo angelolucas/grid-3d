@@ -16,6 +16,7 @@
   user-select: none;
   -webkit-user-select: none;
   pointer-events: none;
+  color: white;
 }
 
 .info__title {
@@ -32,13 +33,13 @@
   display: inline-block;
   border-radius: 4px;
   padding: 3px 8px 2px;
-  background: black;
+  background: white;
   font-size: 80%;
-  color: white;
+  color: black;
 }
 
 body {
-  background-color: #99bd90;
+  background-color: black;
   cursor: -webkit-grab;
 }
 
@@ -63,7 +64,7 @@ body:active {
 
 body:after {
   content: "";
-  background-color: #99bd90;
+  background-color: black;
   position: fixed;
   top: 0;
   left: 0;
@@ -231,19 +232,19 @@ body.init:after {
 }
 
 .cubemap__face--side {
-  background-image: radial-gradient(289% 220% at 50% -25%, #69c3fb 0%, #69c3fb 34%, #ffffff 100%), linear-gradient(to top, #99bd90, #99bd90);
+  background-image: radial-gradient(289% 220% at 50% -25%, #10a0f9 0%, #10a0f9 34%, #ffffff 100%), linear-gradient(to top, #000000, #000000);
   background-position: left top, left bottom;
   background-size: 100% 50%;
 }
 
 .cubemap__face--top {
-  background-image: radial-gradient(40% 40%, #50b9fa, #69c3fb);
+  background-image: radial-gradient(40% 40%, #0693ea, #10a0f9);
   transform: translateY(-99.9%) rotateX(-90deg);
   transform-origin: bottom;
 }
 
 .cubemap__face--bottom {
-  background-color: #99bd90;
+  background-color: black;
   transform: translateY(99.9%) rotateX(90deg);
   transform-origin: top;
 }
@@ -263,12 +264,12 @@ body.init:after {
 }
 .object .b {
   background-color: rgba(255, 255, 255, 0.5);
-  border: 1px solid white;
+  box-shadow: 0 0 0.1px rgba(255, 255, 255, 0.07);
   position: absolute;
   width: 30px;
   height: 100px;
-  top: -1px;
-  left: -1px;
+  top: 0px;
+  left: 0px;
   transform-origin: left;
 }
 .object > .b {
