@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import './index.css';
+import React, { Component } from 'react'
+import './index.css'
 
 class Axis extends Component {
   render() {
@@ -15,8 +15,8 @@ class Axis extends Component {
           <div className="axis axis--perpendicular" />
         </div>
       </div>
-    );
+    )
   }
 }
 
-export default Axis;
+export default Axis
