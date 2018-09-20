@@ -6,6 +6,7 @@ class Rotate extends Component {
     x: 0,
     z: 0,
   }
+
   componentDidMount() {
     this.handleRotate(this.object)
   }
