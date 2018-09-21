@@ -20,14 +20,14 @@ class Rotate extends Component {
 
       object.onmousemove = e => {
         if (dragging) {
-          const measureFromStartX = e.pageX - prevX
-          const measureFromStartY = e.pageY - prevY
+          const measureFromStartX = this.reversePolarity(e.pageX - prevX)
+          const measureFromStartY = this.reversePolarity(e.pageY - prevY)
 
           prevX = e.pageX
           prevY = e.pageY
 
-          const x = this.state.x + (measureFromStartY * 100) / 360
-          const z = this.state.z + (measureFromStartX * 100) / 360
+          const x = this.state.x + measureFromStartY / 3
+          const z = this.state.z + measureFromStartX / 3
 
           this.setState({
             x,
@@ -41,6 +41,8 @@ class Rotate extends Component {
       }
     }
   }
+
+  reversePolarity = value => value - value * 2
 
   render() {
     const { children } = this.props
