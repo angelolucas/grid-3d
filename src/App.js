@@ -7,7 +7,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Rotate className="object-container">
+        <Rotate>
           <Axes />
         </Rotate>
       </div>

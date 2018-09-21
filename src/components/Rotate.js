@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { StyleSheet, css } from 'aphrodite/no-important'
 
 class Rotate extends Component {
   state = {
@@ -42,17 +43,29 @@ class Rotate extends Component {
   }
 
   render() {
-    const { children, ...rest } = this.props
+    const { children } = this.props
     const { x, z } = this.state
-    const transform = { transform: `rotateX(${x}deg) rotateZ(${z}deg)` }
+    const rotation = { transform: `rotateX(${x}deg) rotateZ(${z}deg)` }
 
     return (
-      <div {...rest} ref={object => (this.object = object)}>
-        <div style={transform}>{children}</div>
+      <div
+        className={css(styles.parentMeasures)}
+        ref={object => (this.object = object)}
+      >
+        <div className={css(styles.parentMeasures)} style={rotation}>
+          {children}
+        </div>
       </div>
     )
   }
 }
+
+const styles = StyleSheet.create({
+  parentMeasures: {
+    width: '100%',
+    height: '100%',
+  },
+})
 
 Rotate.propTypes = { children: PropTypes.node.isRequired }
 
