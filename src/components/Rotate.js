@@ -4,6 +4,7 @@ import { StyleSheet, css } from 'aphrodite/no-important'
 
 class Rotate extends Component {
   state = {
+    dragging: false,
     x: 0,
     z: 0,
   }
@@ -14,12 +15,13 @@ class Rotate extends Component {
 
   handleRotate = object => {
     object.onmousedown = e => {
-      let dragging = true
       let prevX = e.pageX
       let prevY = e.pageY
 
+      this.setState({ dragging: true })
+
       object.onmousemove = e => {
-        if (dragging) {
+        if (this.state.dragging) {
           const measureFromStartX = this.reversePolarity(e.pageX - prevX)
           const measureFromStartY = this.reversePolarity(e.pageY - prevY)
 
@@ -36,9 +38,7 @@ class Rotate extends Component {
         }
       }
 
-      object.onmouseup = () => {
-        dragging = false
-      }
+      object.onmouseup = () => this.setState({ dragging: false })
     }
   }
 
@@ -48,11 +48,13 @@ class Rotate extends Component {
     const { children } = this.props
     const { x, z } = this.state
     const rotation = { transform: `rotateX(${x}deg) rotateZ(${z}deg)` }
+    const cursor = this.state.dragging ? '-webkit-grabbing' : '-webkit-grab'
 
     return (
       <div
-        className={css(styles.parentMeasures)}
         ref={object => (this.object = object)}
+        className={css(styles.parentMeasures)}
+        style={{ cursor }}
       >
         <div className={css(styles.parentMeasures)} style={rotation}>
           {children}
