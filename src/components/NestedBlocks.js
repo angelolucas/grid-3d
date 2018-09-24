@@ -3,26 +3,33 @@ import { StyleSheet, css } from 'aphrodite/no-important'
 
 class NestedBlocks extends Component {
   handleAddBlock = () => {
-    const allBlocks = this.block.getElementsByClassName(css(styles.block))
+    const allBlocks = this.root.getElementsByClassName(css(styles.block))
     const lastBlock = allBlocks[allBlocks.length - 1]
     const newBlock = document.createElement('div')
 
     newBlock.className = css(styles.block)
     newBlock.setAttribute('data-last-block', 'true')
 
-    lastBlock.appendChild(newBlock)
+    if (lastBlock) lastBlock.appendChild(newBlock)
+    else this.root.appendChild(newBlock)
+  }
+
+  handleRemoveBlock = () => {
+    const allBlocks = this.root.getElementsByClassName(css(styles.block))
+    const lastBlock = allBlocks[allBlocks.length - 1]
+
+    if (lastBlock) lastBlock.remove()
   }
 
   render() {
     return (
       <div className={css(styles.root)} ref={root => (this.root = root)}>
-        <div ref={block => (this.block = block)} className={css(styles.block)}>
-          <div className={css(styles.block)} />
-        </div>
+        <div className={css(styles.block)} />
 
-        <button onClick={this.handleAddBlock} className={css(styles.addButton)}>
-          add
-        </button>
+        <div className={css(styles.addButton)}>
+          <button onClick={this.handleAddBlock}>add</button>
+          <button onClick={this.handleRemoveBlock}>remove</button>
+        </div>
       </div>
     )
   }
