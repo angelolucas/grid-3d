@@ -8,7 +8,10 @@ class NestedBlocks extends Component {
     const newBlock = document.createElement('div')
 
     newBlock.className = css(styles.block)
-    newBlock.setAttribute('data-last-block', 'true')
+    newBlock.onclick = function(event) {
+      event.stopPropagation()
+      newBlock.classList.add(css(styles.active))
+    }
 
     if (lastBlock) lastBlock.appendChild(newBlock)
     else this.root.appendChild(newBlock)
@@ -24,8 +27,6 @@ class NestedBlocks extends Component {
   render() {
     return (
       <div className={css(styles.root)} ref={root => (this.root = root)}>
-        <div className={css(styles.block)} />
-
         <div className={css(styles.addButton)}>
           <button onClick={this.handleAddBlock}>add</button>
           <button onClick={this.handleRemoveBlock}>remove</button>
@@ -50,6 +51,8 @@ const styles = StyleSheet.create({
     boxShadow: '0 0 0.1px rgba(255, 255, 255, 0.07)',
     transform: 'translateX(100%)',
   },
+
+  active: { backgroundColor: 'rgba(0, 255, 0, 0.5)' },
 
   addButton: {
     position: 'absolute',
