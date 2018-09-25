@@ -4,7 +4,6 @@ import { StyleSheet, css } from 'aphrodite/no-important'
 
 class Rotate extends Component {
   state = {
-    dragging: false,
     x: 0,
     z: 0,
   }
@@ -15,13 +14,12 @@ class Rotate extends Component {
 
   handleRotate = object => {
     object.onmousedown = e => {
+      let dragging = true
       let prevX = e.pageX
       let prevY = e.pageY
 
-      this.setState({ dragging: true })
-
       object.onmousemove = e => {
-        if (this.state.dragging) {
+        if (dragging) {
           const measureFromStartX = this.reversePolarity(e.pageX - prevX)
           const measureFromStartY = this.reversePolarity(e.pageY - prevY)
 
@@ -38,7 +36,9 @@ class Rotate extends Component {
         }
       }
 
-      object.onmouseup = () => this.setState({ dragging: false })
+      object.onmouseup = () => {
+        dragging = false
+      }
     }
   }
 
@@ -48,13 +48,11 @@ class Rotate extends Component {
     const { children } = this.props
     const { x, z } = this.state
     const rotation = { transform: `rotateX(${x}deg) rotateZ(${z}deg)` }
-    const cursor = this.state.dragging ? '-webkit-grabbing' : '-webkit-grab'
 
     return (
       <div
         ref={object => (this.object = object)}
-        className={css(styles.parentMeasures)}
-        style={{ cursor }}
+        className={css(styles.parentMeasures, styles.cursor)}
       >
         <div className={css(styles.parentMeasures)} style={rotation}>
           {children}
@@ -68,6 +66,12 @@ const styles = StyleSheet.create({
   parentMeasures: {
     width: '100%',
     height: '100%',
+  },
+
+  cursor: {
+    cursor: '-webkit-grab',
+
+    ':active': { cursor: '-webkit-grabbing' },
   },
 })
 
